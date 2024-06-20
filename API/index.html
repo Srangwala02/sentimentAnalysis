@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap demo</title>
+		
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+		<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+        <style type="text/css">
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+			.toast-container {
+				-webkit-font-smoothing: antialiased;
+            	-moz-osx-font-smoothing: grayscale;
+			}
+			.toast-body {
+				font-weight: bold;
+			}
+            /* Custom styles for offcanvas */
+            .offcanvas-end.custom-width {
+                width: 70%;
+                max-width: none;
+            }
+            .offcanvas-end.custom-width2 {
+                width: 50%;
+                max-width: none;
+            }
+            /* Custom styles for DataTables */
+            .dataTables_wrapper .dataTables_filter label,
+            .dataTables_wrapper .dataTables_length label,
+            .dataTables_wrapper .dataTables_info,
+            .dataTables_wrapper .dataTables_paginate {
+                color: white; /* Change text color to white */
+            }
+
+            .dataTables_wrapper .dataTables_filter input,
+            .dataTables_wrapper .dataTables_length select {
+                color: white; /* Change input text color to white */
+                background-color: #333; /* Optional: Change background color to dark */
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button {
+                color: white !important; /* Change pagination button text color to white */
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+            .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+            .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+                color: #777 !important; /* Change disabled pagination button text color */
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+            .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover,
+            .dataTables_wrapper .dataTables_paginate .paginate_button.current:active {
+                color: black !important; /* Change current page button text color to white */
+                background-color: #0d6efd !important; /* Change background color of current page button */
+                border-color: #0d6efd !important; /* Change border color of current page button */
+            }
+            .icon-body {
+                display: flex;
+                justify-content:space-between;
+                /* align-items: center; */
+                /* height: 100vh; */
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
+
+            .icon-container {
+                /* text-align: center; */
+                margin-top: 50px;
+            }
+
+            .icon {
+                margin-left: 50px;
+                margin-bottom: 0px;
+            }
+            
+
+            .brand-name {
+                font-size: 30px;
+                color: grey;
+                font-weight: bolder;
+                /* text-transform: uppercase; */
+                letter-spacing: 2px;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, sans-serif;
+                margin: 0;
+            }
+		</style>
+	</head>
+    <body>
+        <div class="icon-body">
+            <div class="icon-container">
+                <div class="icon">
+                    <svg class="icon" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="42" stroke="grey" stroke-width="4"/>
+                        <path d="M20 60 L40 20 L50 70 L70 20" stroke="#4CAF50" stroke-width="4" fill="none"/>
+                        <circle cx="50" cy="50" r="4" fill="#4CAF50"/>
+                    </svg>
+                    <span class="brand-name">Data<span style="color: #4CAF50;">Nurture</span></span>
+                </div>
+                
+            </div>
+        </div>
+          <div class="p-4 w-50" id="liveAlertPlaceholder"></div>
+          <div class="container p-5" >
+            <div id="fileSelect">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Default file input example</label>
+                    <input class="form-control" type="file" id="formFile">
+                </div>
+                <div class="mb-3">
+                    <button type="button" id="saveFile" class="btn btn-secondary me">Save the file</button>
+                </div>
+            </div>
+            <div id="fileDelete">
+            <div >
+                <div class="mb-3">
+                    <button type="button" class="btn btn-secondary me" id="deletefile">Delete the file</button>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-dark mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="toggleButton">
+                    <i class="fa-solid fa-chevron-up fa-rotate-180 me-2" id="toggleIcon"></i>Basic Information
+                </button>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <div class="container">
+                            <table class="table">
+                                <thead>
+                                    <tr class="border table-active text-center">
+                                        <th>
+                                            <!-- <h4 class="border"> -->
+                                                Content
+                                            <!-- </h4> -->
+                                        </th>
+                                        <th>
+                                            <!-- <h4> -->
+                                                Value
+                                            <!-- </h4> -->
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            No. of rows
+                                        </td>
+                                        <td id="noofrows">
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            No. of columns
+                                        </td>
+                                        <td id="noofcols">
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            No. of duplicate rows
+                                        </td>
+                                        <td id="duplicaterows">
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Categorical columns
+                                        </td>
+                                        <td id="catcols">
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Numerical columns
+                                        </td>
+                                        <td id="numcols">
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Columns information
+                                        </td>
+                                        <td>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr class="table-active">
+                                                        <th>
+                                                            Column Name
+                                                        </th>
+                                                        <th>
+                                                            Datatype
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="colsinfo">
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Total null counts
+                                        </td>
+                                        <td>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr class="table-active">
+                                                        <th>
+                                                            Column Name
+                                                        </th>
+                                                        <th>
+                                                            No. of null values
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="nullcounts">
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Null percentage
+                                        </td>
+                                        <td>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr class="table-active">
+                                                        <th>
+                                                            Column Name
+                                                        </th>
+                                                        <th>
+                                                            Null Percentage
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="nullpercentage">
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <h3 class="text-white">Demo Data</h3>
+                <table class="table table-striped border">
+                    <thead id="thead-data">
+                        
+                    </thead>
+                    <tbody id="tbody-data">
+
+                    </tbody>
+                  </table>
+            </div>
+            <button class="btn btn-secondary mb-3 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Drop columns</button>
+
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Drop Columns</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div id="colchecks">
+
+                </div>
+            </div>
+            </div>
+            <button class="btn btn-secondary mb-3 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions2" aria-controls="offcanvasWithBothOptions">Delete null valued rows</button>
+
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions2" aria-labelledby="offcanvasWithBothOptionsLabel2">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel2">Delete null valued rows of columns</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div id="colchecks2">
+
+                </div>
+            </div>
+            </div>
+            <button class="btn btn-secondary mb-3 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions3" aria-controls="offcanvasWithBothOptions">Unique value counts</button>
+
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions3" aria-labelledby="offcanvasWithBothOptionsLabel3">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel3">Unique value counts</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div id="colchecks3">
+
+                </div>
+            </div>
+            </div>
+            <button class="btn btn-secondary mb-3 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions4" aria-controls="offcanvasWithBothOptions">Specific value counts</button>
+
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions4" aria-labelledby="offcanvasWithBothOptionsLabel4">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel4">Specific value counts</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div id="colchecks4">
+
+                </div>
+            </div>
+            </div>
+            <button class="btn btn-secondary mb-3 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions5" aria-controls="offcanvasWithBothOptions">Filter data</button>
+
+            <div class="offcanvas offcanvas-end custom-width" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions5" aria-labelledby="offcanvasWithBothOptionsLabel5">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel5">Filter Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div id="colchecks5">
+
+                </div>
+            </div>
+            </div>
+            <button class="btn btn-secondary mb-3 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions6" aria-controls="offcanvasWithBothOptions">Perform sentiment analysis</button>
+
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions6" aria-labelledby="offcanvasWithBothOptionsLabel6">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel6">Perform sentiment analysis</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div id="colchecks6">
+
+                </div>
+            </div>
+            </div>
+            <button class="btn btn-secondary mb-5 me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions7" aria-controls="offcanvasWithBothOptions">Sentiment counts</button>
+
+            <div class="offcanvas offcanvas-end custom-width2" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions7" aria-labelledby="offcanvasWithBothOptionsLabel7">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel7">Get</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div id="colchecks7">
+
+                </div>
+            </div>
+            </div>
+            <button class="btn btn-secondary mb-5 me-3" type="button" id="keyfeatureBtn">Extract keyfeature</button>
+            <button class="btn btn-secondary mb-5 me-3" type="button" id="improvementBtn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions8" aria-controls="offcanvasWithBothOptions">Keyfeature improvements</button>
+
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions8" aria-labelledby="offcanvasWithBothOptionsLabel8">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel8">Keyfeature improvements</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div id="colchecks8">
+                    <h4 class="mb-3">Improvements Data</h4>
+                    <table id="improvementsTable" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Keyword</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Table body will be generated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-dark mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" id="toggleButton2">
+                    <i class="fa-solid fa-chevron-up fa-rotate-180 me-2" id="toggleIcon2"></i>Charts
+                </button>
+                <div class="collapse" id="collapseExample2">
+                    <div class="card card-body p-5">
+                        <!-- <div class="container mb-5"> -->
+                            <label class="form-check-label mb-2" for="chrt">
+                                Select chart type
+                            </label>
+                            <select class="form-select mb-3" id="chrt" name="chrt" aria-label="Default select example">
+                                <option value="0" selected>-- select type --</option>
+                                <option value="1">Bar chart</option>
+                                <option value="2">Heatmap</option>
+                                <option value="3">Line chart</option>
+                                <option value="4">Histogram</option>
+                                <option value="5">Scatter plot</option>
+                                <option value="6">Pie chart</option>
+                            </select>
+                            <div id="chartcols" class="mb-4">
+
+                            </div>
+                            <!-- <div> -->
+                            <center>
+                                <img id="chrtimg" style="max-width: 750; max-height: 650;">
+                            </center>
+                            <!-- </div> -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+		<div class="toast-container position-fixed top-0 end-0 p-3">
+			<div id="liveToast" class="toast bg-secondary" role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header bg-secondary">
+					<strong class="me-auto">Notification</strong>
+					<button type="button" class="btn-close text-dark" data-bs-dismiss="toast" aria-label="Close"></button>
+				</div>
+				<div class="toast-body" id="toastMsg">
+					
+				</div>
+			</div>
+		</div>
+    </body>
+    <script>
+		$(document).ready(() => {
+
+            Object.defineProperty(String.prototype, 'capitalize', {
+                value: function() {
+                    return this.charAt(0).toUpperCase() + this.slice(1);
+                },
+                enumerable: false
+            });
+
+            // Function to set a cookie
+            function setCookie(name, value, days) {
+                let expires = "";
+                if (days) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
+            }
+
+            // Function to get a cookie by name
+            function getCookie(name) {
+                const nameEQ = name + "=";
+                const ca = document.cookie.split(';');
+                for(let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+
+            function deleteCookie(name) {
+                // Set the cookie's expiration date to a time in the past
+                document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            }
+
+            // Function to delete the cookie and call the delete-key API
+            function deleteSessionKey() {
+                const session_id = getCookie("session_id");
+                if (!session_id) {
+                    // Call your delete-key API
+                    fetch('/delete-key', {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ session_id: session_id })
+                    }).then(response => {
+                        if (response.ok) {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Document deleted successfully");
+                            toastBootstrap.show()
+                        } else {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Failed to delete document!");
+                            toastBootstrap.show()
+                            console.error("Failed to delete session key");
+                        }
+                    });
+                }
+            }
+
+            function display_info(session_id){
+                $.ajax({
+                    url: "http://127.0.0.1:8000/get-info/",
+                    type: 'POST',
+                    contentType: 'application/json', 
+                    data: JSON.stringify({"session_id": session_id}),
+                    success: (response) => {
+                        $("#noofrows").text(response.total_rows)
+                        $("#noofcols").text(response.total_cols)
+                        $("#duplicaterows").text(response.duplicate_rows)
+                        $("#catcols").text(response.categorical_columns)
+                        $("#numcols").text(response.numerical_cols)
+                        var tableBody = $('#colsinfo');
+                        tableBody.empty();  // Clear any existing rows
+                        $.each(response.cols_info, function(key, value) {
+                            var newRow = `<tr>
+                                <td>${key}</td>
+                                <td>${value}</td>
+                            </tr>`;
+                            tableBody.append(newRow);
+                        });
+                        // let cols = response.cols_info.keys()
+                        var checkboxContainer = $('#colchecks');
+                        checkboxContainer.empty();
+                        var checkboxContainer2 = $('#colchecks2');
+                        checkboxContainer2.empty();
+                        var checkboxContainer3 = $('#colchecks3');
+                        checkboxContainer3.empty();
+                        var checkboxContainer4 = $('#colchecks4');
+                        checkboxContainer4.empty();
+                        var checkboxContainer5 = $('#colchecks5');
+                        checkboxContainer5.empty();
+                        var checkboxContainer6 = $('#colchecks6');
+                        checkboxContainer6.empty();
+                        var checkboxContainer7 = $('#colchecks7');
+                        checkboxContainer7.empty();
+
+                        var headers = Object.keys(response.cols_info);
+                        headers.forEach(header => {
+                            var checkbox = `<div class="form-check">
+                                <input class="form-check-input chk1" type="checkbox" value="${header}" id="${header}">
+                                <label class="form-check-label" for="${header}">
+                                    ${header}
+                                </label>
+                            </div>`;
+                            var checkbox2 = `<div class="form-check">
+                                <input class="form-check-input chk2" type="checkbox" value="${header}" id="${header}">
+                                <label class="form-check-label" for="${header}">
+                                    ${header}
+                                </label>
+                            </div>`;
+                            var checkbox3 = `<div class="form-check">
+                                <input class="form-check-input chk3" type="checkbox" value="${header}" id="${header}">
+                                <label class="form-check-label" for="${header}">
+                                    ${header}
+                                </label>
+                            </div>`;
+                            var checkbox4 = `<div class="form-check mb-3">
+                                <input class="form-check-input chk4" type="checkbox" value="${header}" id="${header}">
+                                <label class="form-check-label me-4" for="${header}">
+                                    ${header}
+                                </label>
+                                <input class="form-control form-control-sm mt-2" type="text" placeholder="Enter value" id="${header}val" aria-label="default input example">
+                            </div>`;
+                            var checkbox5 = `<div class="form-check mb-3">
+                                <input class="form-check-input chk5" type="checkbox" value="${header}" id="${header}">
+                                <label class="form-check-label me-4" for="${header}">
+                                    ${header}
+                                </label>
+                                <input class="form-control form-control-sm mt-2" type="text" placeholder="Enter value" id="${header}val2" aria-label="default input example">
+                            </div>`;
+                            var radioButton = `<div class="form-check">
+                                <input class="form-check-input" type="radio" name="radioGroup" value="${header}" id="${header}">
+                                <label class="form-check-label" for="${header}">
+                                    ${header}
+                                </label>
+                            </div>`;
+                            var radioButton2 = `<div class="form-check">
+                                <input class="form-check-input" type="radio" name="radioGroup2" value="${header}" id="${header}">
+                                <label class="form-check-label" for="${header}">
+                                    ${header}
+                                </label>
+                            </div>`;
+                            checkboxContainer.append(checkbox);
+                            checkboxContainer2.append(checkbox2);
+                            checkboxContainer3.append(checkbox3);
+                            checkboxContainer4.append(checkbox4);
+                            checkboxContainer5.append(checkbox5);
+                            checkboxContainer6.append(radioButton);
+                            checkboxContainer7.append(radioButton2);
+                        });
+                        checkboxContainer.append(`<div class="mt-4 text-center"><button type="button" class="btn btn-secondary w-40" id="dropBtn">Drop</button></div>`);
+                        checkboxContainer2.append(`<div class="mt-4 text-center"><button type="button" class="btn btn-secondary w-40" id="deleteNullBtn">Delete</button></div>`);
+                        checkboxContainer3.append(`<div class="mt-4 mb-3 text-center"><button type="button" class="btn btn-secondary w-40" id="uniqueValBtn">Get</button></div><div id="responseContainer" class="mb-3"></div>`);
+                        checkboxContainer4.append(`<div class="mt-4 text-center"><button type="button" class="btn btn-secondary w-40 mb-3" id="specificValCntBtn">Get</button></div><div id="responseContainer2" class="mb-3"></div>`);
+                        checkboxContainer5.append(`<div class="mt-4 text-center"><button type="button" class="btn btn-secondary w-40 mb-3" id="specificValBtn">Get</button></div><div id="responseContainer3" class="mb-3"></div>`);
+                        checkboxContainer6.append(`<div class="mt-4 text-center"><button type="button" class="btn btn-secondary w-40 mb-3" id="analysisBtn">Perform</button></div>`);
+                        checkboxContainer7.append(`<div class="mt-4 text-center"><button type="button" class="btn btn-secondary w-40 mb-3" id="sentimentCountBtn">Get</button></div><div id="responseContainer4" class="mb-3"></div>`);
+
+                        var tableBody = $('#nullcounts');
+                        tableBody.empty();  // Clear any existing rows
+                        $.each(response.null_counts, function(key, value) {
+                            var newRow = `<tr>
+                                <td>${key}</td>
+                                <td>${value}</td>
+                            </tr>`;
+                            tableBody.append(newRow);
+                        });
+                        var tableBody = $('#nullpercentage');
+                        tableBody.empty();  // Clear any existing rows
+                        $.each(response.null_percentage, function(key, value) {
+                            var newRow = `<tr>
+                                <td>${key}</td>
+                                <td>${value}</td>
+                            </tr>`;
+                            tableBody.append(newRow);
+                        });
+                        console.log('Data fetched successfully', response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Data getching failed', status, error);
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Data fetching failed! Please try again!");
+                        toastBootstrap.show()
+                    }
+                })
+            }
+
+            function display_first_rows(session_id){
+                $.ajax({
+                    url: "http://127.0.0.1:8000/get-first-rows/?session_id="+session_id,
+                    type: 'GET',
+                    contentType: 'application/json', 
+                    data: JSON.stringify({"session_id": session_id}),
+                    success: (response) => {
+                        displayData(response.result)
+                        console.log('Rows fetched successfully', response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Data getching failed', status, error);
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Data fetching failed! Please try again!");
+                        toastBootstrap.show()
+                    }
+                })
+            }
+
+            // Function to display JSON data in the table
+            function displayData(data) {
+                var tableHead = $('#thead-data');
+                var tableBody = $('#tbody-data');
+
+                // Clear any existing content
+                tableHead.empty();
+                tableBody.empty();
+
+                // Create table headers
+                var headers = Object.keys(data);
+                var headerRow = '<tr>';
+                headers.forEach(header => {
+                    headerRow += `<th>${header.capitalize()}</th>`;
+                });
+                headerRow += '</tr>';
+                tableHead.append(headerRow);
+
+                // Get the number of rows
+                var numRows = Object.keys(data[headers[0]]).length;
+
+                // Create table rows
+                for (var i = 0; i < numRows; i++) {
+                    var row = '<tr>';
+                    headers.forEach(header => {
+                        row += `<td>${data[header][i]}</td>`;
+                    });
+                    row += '</tr>';
+                    tableBody.append(row);
+                }
+            }
+
+            function displayResponse(data) {
+                var container = $('#responseContainer');
+                container.empty();
+
+                if (data.value_counts) {
+                    for (var key in data.value_counts) {
+                        if (data.value_counts.hasOwnProperty(key)) {
+                            var header = `<h5>${key}</h5>`;
+                            var table = `<table class="table table-bordered"><thead><tr><th>Value</th><th>Count</th></tr></thead><tbody>`;
+                            for (var subKey in data.value_counts[key]) {
+                                if (data.value_counts[key].hasOwnProperty(subKey)) {
+                                    table += `<tr><td>${subKey}</td><td>${data.value_counts[key][subKey]}</td></tr>`;
+                                }
+                            }
+                            table += `</tbody></table>`;
+                            container.append(header);
+                            container.append(table);
+                        }
+                    }
+                }
+
+                if (data.errors) {
+                    var errorHeader = `<h5>Errors</h5>`;
+                    var errorTable = `<table class="table table-bordered"><thead><tr><th>Error Type</th><th>Message</th></tr></thead><tbody>`;
+                    for (var errorKey in data.errors) {
+                        if (data.errors.hasOwnProperty(errorKey)) {
+                            errorTable += `<tr><td>${errorKey}</td><td>${data.errors[errorKey]}</td></tr>`;
+                        }
+                    }
+                    errorTable += `</tbody></table>`;
+                    container.append(errorHeader);
+                    container.append(errorTable);
+                }
+            }
+
+            function displayResponse2(data) {
+                var container = $('#responseContainer2');
+                container.empty();
+
+                if (data.counts) {
+                    // for (var key in data.counts) {
+                    //     if (data.counts.hasOwnProperty(key)) {
+                            // var header = `<h5>${key}</h5>`;
+                            var table = `<table class="table table-bordered mt-3"><thead><tr><th>Value</th><th>Count</th></tr></thead><tbody>`;
+                            for (var subKey in data.counts) {
+                                if (data.counts.hasOwnProperty(subKey)) {
+                                    table += `<tr><td>${subKey}</td><td>${data.counts[subKey]}</td></tr>`;
+                                }
+                            }
+                            table += `</tbody></table>`;
+                            // container.append(header);
+                            container.append(table);
+                    //     }
+                    // }
+                }
+
+                if (data.errors) {
+                    var errorHeader = `<h5>Errors</h5>`;
+                    var errorTable = `<table class="table table-bordered"><thead><tr><th>Error Type</th><th>Message</th></tr></thead><tbody>`;
+                    for (var errorKey in data.errors) {
+                        if (data.errors.hasOwnProperty(errorKey)) {
+                            errorTable += `<tr><td>${errorKey}</td><td>${data.errors[errorKey]}</td></tr>`;
+                        }
+                    }
+                    errorTable += `</tbody></table>`;
+                    container.append(errorHeader);
+                    container.append(errorTable);
+                }
+            }
+
+            function displayResponse3(data) {
+                var container = $('#responseContainer3');
+                container.empty();
+
+                if (data.filtered_rows) {
+                    for (var key in data.filtered_rows) {
+                        if (data.filtered_rows.hasOwnProperty(key)) {
+                            var header = `<h5>${key}</h5>`;
+                            var table = `<table class="table table-bordered dataTable text-white"><thead><tr>`;
+                            var firstRow = data.filtered_rows[key][0];
+                            for (var col in firstRow) {
+                                table += `<th>${col}</th>`;
+                            }
+                            table += `</tr></thead><tbody>`;
+                            data.filtered_rows[key].forEach(row => {
+                                table += `<tr>`;
+                                for (var col in row) {
+                                    table += `<td>${row[col]}</td>`;
+                                }
+                                table += `</tr>`;
+                            });
+                            table += `</tbody></table>`;
+                            container.append(header);
+                            container.append(table);
+                        }
+                    }
+
+                    // Initialize DataTables for each table
+                    $('.dataTable').DataTable();
+                }
+
+                if (data.errors) {
+                    var errorHeader = `<h5>Errors</h5>`;
+                    var errorTable = `<table class="table table-bordered"><thead><tr><th>Error Type</th><th>Message</th></tr></thead><tbody>`;
+                    for (var errorKey in data.errors) {
+                        if (data.errors.hasOwnProperty(errorKey)) {
+                            errorTable += `<tr><td>${errorKey}</td><td>${data.errors[errorKey]}</td></tr>`;
+                        }
+                    }
+                    errorTable += `</tbody></table>`;
+                    container.append(errorHeader);
+                    container.append(errorTable);
+                }
+            }
+
+            function displaySentimentCounts(data, colname) {
+                var container = $('#responseContainer4');
+                container.empty();
+
+                if (data.sentiment_counts) {
+                    var products = [];
+                    for (var product in data.sentiment_counts.Positive) {
+                        products.push(product);
+                    }
+
+                    var table = `<table class="table table-bordered" id="sentimentTable">
+                                    <thead>
+                                        <tr>
+                                            <th>${colname}</th>
+                                            <th>Negative</th>
+                                            <th>Neutral</th>
+                                            <th>Positive</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>`;
+
+                    products.forEach(product => {
+                        table += `<tr>
+                                    <td>${product}</td>
+                                    <td>${data.sentiment_counts.Negative[product] || 0}</td>
+                                    <td>${data.sentiment_counts.Neutral[product] || 0}</td>
+                                    <td>${data.sentiment_counts.Positive[product] || 0}</td>
+                                </tr>`;
+                    });
+
+                    table += `   </tbody>
+                                </table>`;
+                    container.append(table);
+
+                    // Initialize DataTables with pagination
+                    $('#sentimentTable').DataTable({
+                        paging: true, // Enable pagination
+                        searching: true, // Enable search functionality
+                        lengthChange: true, // Enable per page selection
+                        pageLength: 10 // Number of rows per page
+                    });
+                }
+            }
+
+            // Check every hour if the cookie has expired
+            setInterval(() => {
+                deleteSessionKey();
+            }, 12 * 60 * 60 * 1000); // Check every 12 hour
+
+            let session_id = getCookie("session_id")
+            if(session_id){
+                $("#fileDelete").show()
+                $("#fileSelect").hide()
+                display_info(session_id)
+                display_first_rows(session_id)
+            } else { 
+                $("#fileDelete").hide()
+                $("#fileSelect").show()
+            }
+
+			$('#formFile').on('change', function(event) {
+                var fileName = $(this).val();
+                var idxDot = fileName.lastIndexOf(".") + 1;
+                var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+                if (extFile != "csv") {
+                    // alert("Only CSV files are allowed!");
+					const toastLiveExample = $('#liveToast')
+					const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+					$("#toastMsg").text("Only CSV files are supported");
+					toastBootstrap.show()
+					$(this).val("");
+                    event.preventDefault();
+                }
+            });
+
+			$("#saveFile").click((event)=>{
+				if($("formFile").val() == ""){
+					const toastLiveExample = $('#liveToast')
+					const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+					$("#toastMsg").text("First select CSV file");
+					toastBootstrap.show()
+					event.preventDefault();
+				} else {
+					var formData = new FormData();
+                    var fileInput = $('#formFile')[0];
+                    var file = fileInput.files[0];
+                    formData.append('file', file);
+
+                    $.ajax({
+                        url: 'http://127.0.0.1:8000/upload-csv/',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            console.log('File uploaded successfully', response);
+                            $("#fileDelete").show()
+                            $("#fileSelect").hide()
+                            $('#formFile').val("");
+                            setCookie("session_id", response.session_id, 7);
+                            const toastLiveExample = $('#liveToast')
+							const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+							$("#toastMsg").text("File uploaded successfully");
+                            display_info(response.session_id)
+                            display_first_rows(response.session_id)
+							toastBootstrap.show()
+							event.preventDefault();
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('File upload failed', status, error);
+                            const toastLiveExample = $('#liveToast')
+							const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+							$("#toastMsg").text("File upload failed! Please try again!");
+							toastBootstrap.show()
+							event.preventDefault();
+                        }
+					})
+				}
+			})
+
+            $(document).on("click", "#dropBtn", async function () {
+                var selectedCols = [];
+                $('.chk1:checked').each(function() {
+                    if($(this).val()!=""){
+                        selectedCols.push($(this).val());
+                    }
+                });
+
+                if (selectedCols.length > 0) {
+                    if(!session_id){
+                        session_id = getCookie("session_id");
+                    }
+                    console.log(selectedCols)
+                    $.ajax({
+                        url: "http://127.0.0.1:8000/drop-columns/",
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ "columns": selectedCols, "session_id":session_id }),
+                        success: function(response) {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Columns dropped successfully");
+                            toastBootstrap.show()
+                            // console.log('Data sent successfully', response);
+                        },
+                        error: function(xhr, status, error) {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Failed to drop columns!");
+                            toastBootstrap.show()
+                            console.error('Error sending data', status, error);
+                        }
+                    });
+                } else {
+                    // alert("Please select at least one column.");
+                    const toastLiveExample = $('#liveToast')
+					const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+					$("#toastMsg").text("Please select at least one column");
+					toastBootstrap.show()
+                }
+            });
+
+            $(document).on("click", "#deleteNullBtn", async function () {
+                var selectedCols = [];
+                $('.chk2:checked').each(function() {
+                    if($(this).val()!=""){
+                        selectedCols.push($(this).val());
+                    }
+                });
+
+                if (selectedCols.length > 0) {
+                    if(!session_id){
+                        session_id = getCookie("session_id");
+                    }
+                    console.log(selectedCols)
+                    $.ajax({
+                        url: "http://127.0.0.1:8000/drop-null-value-rows/",
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ "columns": selectedCols, "session_id":session_id }),
+                        success: function(response) {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Null-valued rows deleted successfully");
+                            toastBootstrap.show()
+                            // console.log('Data sent successfully', response);
+                        },
+                        error: function(xhr, status, error) {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Failed to delete null-valued rows!");
+                            toastBootstrap.show()
+                            console.error('Error sending data', status, error);
+                        }
+                    });
+                } else {
+                    // alert("Please select at least one column.");
+                    const toastLiveExample = $('#liveToast')
+					const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+					$("#toastMsg").text("Please select at least one column");
+					toastBootstrap.show()
+                }
+            });
+
+            $(document).on("click", "#uniqueValBtn", async function () {
+                var selectedCols = [];
+                $('.chk3:checked').each(function() {
+                    if($(this).val()!=""){
+                        selectedCols.push($(this).val());
+                    }
+                });
+
+                if (selectedCols.length > 0) {
+                    if(!session_id){
+                        session_id = getCookie("session_id");
+                    }
+                    console.log(selectedCols)
+                    $.ajax({
+                        url: "http://127.0.0.1:8000/get-unique-value-counts/",
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ "columns": selectedCols, "session_id":session_id }),
+                        success: function(response) {
+                            displayResponse(response);
+                            // console.log('Data sent successfully', response);
+                        },
+                        error: function(xhr, status, error) {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Failed to get unique value counts!");
+                            toastBootstrap.show()
+                            console.error('Error sending data', status, error);
+                        }
+                    });
+                } else {
+                    // alert("Please select at least one column.");
+                    const toastLiveExample = $('#liveToast')
+					const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+					$("#toastMsg").text("Please select at least one column");
+					toastBootstrap.show()
+                }
+            });
+
+            $(document).on("click", "#specificValCntBtn", async function () {
+                var column_value_pairs = [];
+
+                $('.chk4:checked').each(function() {
+                    var column = $(this).val();
+                    var value = $('#' + column + 'val').val();
+                    if (value) {
+                        column_value_pairs.push({ column: column, value: value });
+                    }
+                });
+
+                if (column_value_pairs.length > 0) {
+                    if(!session_id){
+                        session_id = getCookie("session_id");
+                    }
+                    $.ajax({
+                        url: "http://127.0.0.1:8000/get-specific-value-counts/",
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ "column_value_pairs": column_value_pairs, "session_id":session_id }),
+                        success: function(response) {
+                            console.log("response ",response)
+                            displayResponse2(response)
+                            // const toastLiveExample = $('#liveToast')
+                            // const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            // $("#toastMsg").text("Null-valued rows deleted successfully");
+                            // toastBootstrap.show()
+                            // console.log('Data sent successfully', response);
+                        },
+                        error: function(xhr, status, error) {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Failed to delete null-valued rows!");
+                            toastBootstrap.show()
+                            console.error('Error sending data', status, error);
+                        }
+                    });
+                } else {
+                    // alert("Please select at least one column.");
+                    const toastLiveExample = $('#liveToast')
+					const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+					$("#toastMsg").text("Please select at least one column");
+					toastBootstrap.show()
+                }
+            });
+
+            $(document).on("click", "#specificValBtn", async function () {
+                var column_value_pairs = [];
+
+                $('.chk5:checked').each(function() {
+                    var column = $(this).val();
+                    var value = $('#' + column + 'val2').val();
+                    if (value) {
+                        column_value_pairs.push({ column: column, value: value });
+                    }
+                });
+
+                if (column_value_pairs.length > 0) {
+                    if(!session_id){
+                        session_id = getCookie("session_id");
+                    }
+                    $.ajax({
+                        url: "http://127.0.0.1:8000/get-specific-value-rows/",
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ "column_value_pairs": column_value_pairs, "session_id":session_id }),
+                        success: function(response) {
+                            displayResponse3(response)
+                            // const toastLiveExample = $('#liveToast')
+                            // const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            // $("#toastMsg").text("Null-valued rows deleted successfully");
+                            // toastBootstrap.show()
+                            // console.log('Data sent successfully', response);
+                        },
+                        error: function(xhr, status, error) {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Failed to get specific value rows!");
+                            toastBootstrap.show()
+                            console.error('Error sending data', status, error);
+                        }
+                    });
+                } else {
+                    // alert("Please select at least one column.");
+                    const toastLiveExample = $('#liveToast')
+					const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+					$("#toastMsg").text("Please select at least one column");
+					toastBootstrap.show()
+                }
+            });
+		
+            $(document).on("click", "#analysisBtn", async function () {
+                var selectedValue = $('input[name="radioGroup"]:checked').val();
+                if (selectedValue) {
+                    if(!session_id){
+                        session_id = getCookie("session_id");
+                    }
+                    $.ajax({
+                        url: "http://127.0.0.1:8000/perform-sentiment-analysis/",
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ "column_name": selectedValue, "session_id":session_id }),
+                        success: function(response) {
+                            if(response.status_code == 200){
+                                const toastLiveExample = $('#liveToast')
+                                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                                $("#toastMsg").text("Sentiment analysis performed successfully");
+                                toastBootstrap.show()
+                            } else {
+                                const toastLiveExample = $('#liveToast')
+                                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                                $("#toastMsg").text("Failed to perform sentiment analysis");
+                                toastBootstrap.show()
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Failed to perform sentiment analysis");
+                            toastBootstrap.show()
+                            console.error('Error sending data', status, error);
+                        }
+                    });
+                } else {
+                    const toastLiveExample = $('#liveToast')
+					const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+					$("#toastMsg").text("Please select one column");
+					toastBootstrap.show()
+                }
+            });
+		
+            $(document).on("click", "#sentimentCountBtn", async function () {
+                var selectedValue = $('input[name="radioGroup2"]:checked').val();
+                if (selectedValue) {
+                    if(!session_id){
+                        session_id = getCookie("session_id");
+                    }
+                    $.ajax({
+                        url: "http://127.0.0.1:8000/get-sentiment-counts/",
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ "column_name": selectedValue, "session_id":session_id }),
+                        success: function(response) {
+                            displaySentimentCounts(response, selectedValue)
+                        },
+                        error: function(xhr, status, error) {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Failed to get sentiment counts");
+                            toastBootstrap.show()
+                        }
+                    });
+                } else {
+                    const toastLiveExample = $('#liveToast')
+					const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+					$("#toastMsg").text("Please select one column");
+					toastBootstrap.show()
+                }
+            });
+		
+            $(document).on("click", "#keyfeatureBtn", async function () {
+                
+                if(!session_id){
+                    session_id = getCookie("session_id");
+                }
+                $.ajax({
+                    url: "http://127.0.0.1:8000/extract-keyfeature/",
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ "session_id":session_id }),
+                    success: function(response) {
+                        if(response.status_code == 200){
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Keyfeature extracted successfully");
+                            toastBootstrap.show()
+                        } else {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Failed to extract keyfeature");
+                            toastBootstrap.show()
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Failed to extract keyfeature");
+                        toastBootstrap.show()
+                    }
+                });
+                
+            });
+		
+            $(document).on("click", "#improvementBtn", async function () {
+                
+                if(!session_id){
+                    session_id = getCookie("session_id");
+                }
+                $.ajax({
+                    url: "http://127.0.0.1:8000/keyfeature-improvements/",
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ "session_id":session_id }),
+                    success: function(response) {
+                        // Initialize DataTables
+                        $('#improvementsTable').DataTable({
+                            paging: true, // Enable pagination
+                            searching: true, // Enable search functionality
+                            data: Object.entries(response.improvements).map(([keyword, count]) => ({ keyword, count })),
+                            columns: [
+                                { data: 'keyword' },
+                                { data: 'count' }
+                            ]
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Failed to get sentiment counts");
+                        toastBootstrap.show()
+                    }
+                });
+                
+            });
+		
+            $("#chrt").on("change", () => {
+                let val = $("#chrt").val();
+                $.ajax({
+                    url: "http://127.0.0.1:8000/get-info/",
+                    type: 'POST',
+                    contentType: 'application/json', 
+                    data: JSON.stringify({"session_id": session_id}),
+                    success: (response) => {
+                        var headers = Object.keys(response.cols_info);
+                        let container = $("#chartcols");
+                        container.empty();
+                        container.append(`<label class="form-label">
+                                    Title :
+                                </label>
+                                <input class="form-control mb-3" id="title" type="text" placeholder="enter title" aria-label="default input example">`)
+                        switch (val) {
+                            case "1":
+                                let radioButton = "";
+                                
+                                container.append(`<label class="form-label">
+                                    Group by columns :
+                                </label>`)
+                                headers.forEach(header => {
+                                    var checkbox = `<div class="form-check">
+                                        <input class="form-check-input bargroup" type="checkbox" value="${header}">
+                                        <label class="form-check-label" for="${header}">
+                                            ${header}
+                                        </label>
+                                    </div>`;
+                                    container.append(checkbox);
+                                    radioButton += `<div class="form-check">
+                                        <input class="form-check-input" type="radio" name="rg" value="${header}">
+                                        <label class="form-check-label" for="${header}">
+                                            ${header}
+                                        </label>
+                                    </div>`;
+                                })
+                                container.append(`<label class="form-label mt-3 mb-3">
+                                    Category column :
+                                </label>`)
+                                container.append(radioButton)
+                                container.append(`<div class="form-check mt-3 mb-3">
+                                        <input class="form-check-input" type="checkbox" id="stacked" value="stacked">
+                                        <label class="form-check-label" for="stacked">
+                                            Stacked
+                                        </label>
+                                    </div>
+                                    <button type="button" id="barchrt" class="btn btn-secondary">Generate chart</button>`);
+                                break;
+                            case "2":
+                                let radioButton2 = "";
+                                container.append(`<label class="form-label">
+                                    Group by columns :
+                                </label>`)
+                                headers.forEach(header => {
+                                    var checkbox = `<div class="form-check">
+                                        <input class="form-check-input heatmapgroup" type="checkbox" value="${header}">
+                                        <label class="form-check-label" for="${header}">
+                                            ${header}
+                                        </label>
+                                    </div>`;
+                                    container.append(checkbox);
+                                    radioButton2 += `<div class="form-check">
+                                        <input class="form-check-input" type="radio" name="rg2" value="${header}">
+                                        <label class="form-check-label" for="${header}">
+                                            ${header}
+                                        </label>
+                                    </div>`;
+                                })
+                                container.append(`<label class="form-label mt-3">
+                                    Category column :
+                                </label>`)
+                                container.append(radioButton2)
+                                container.append(`<button type="button" id="heatmapchrt" class="btn btn-secondary mt-3">Generate chart</button>`)
+                                break;
+                            case "3":
+                                let radioButton3 = "";
+                                container.append(`<label class="form-label">
+                                    X label :
+                                </label>
+                                <input class="form-control mb-3" id="xlabel1" type="text" placeholder="enter x-label" aria-label="default input example">`)
+                                container.append(`<label class="form-label">
+                                    X column :
+                                </label>`)
+                                headers.forEach(header => {
+                                    var radio = `<div class="form-check">
+                                        <input class="form-check-input" type="radio" name="rg3" value="${header}">
+                                        <label class="form-check-label" for="${header}">
+                                            ${header}
+                                        </label>
+                                    </div>`;
+                                    container.append(radio);
+                                    radioButton3 += `<div class="form-check">
+                                        <input class="form-check-input" type="radio" name="rg4" value="${header}">
+                                        <label class="form-check-label" for="${header}">
+                                            ${header}
+                                        </label>
+                                    </div>`;
+                                })
+                                container.append(`<label class="form-label">
+                                    Y label :
+                                </label>
+                                <input class="form-control mb-3" id="ylabel1" type="text" placeholder="enter y-label" aria-label="default input example">`)
+                                container.append(`<label class="form-label mt-3">
+                                    Y column :
+                                </label>`)
+                                container.append(radioButton3)
+                                container.append(`<button type="button" id="linechrt" class="btn btn-secondary mt-3">Generate chart</button>`)
+                                break;
+                            case "4":
+                                container.append(`<label class="form-label">
+                                    Column label :
+                                </label>
+                                <input class="form-control mb-3" id="collabel2" type="text" placeholder="enter column label" aria-label="default input example">`)
+                        
+                                container.append(`<label class="form-label">
+                                    Select column :
+                                </label>`)
+                                headers.forEach(header => {
+                                    var radio = `<div class="form-check">
+                                        <input class="form-check-input" type="radio" name="rg5" value="${header}">
+                                        <label class="form-check-label" for="${header}">
+                                            ${header}
+                                        </label>
+                                    </div>`;
+                                    container.append(radio);
+                                })
+                                container.append(`<button type="button" id="histchrt" class="btn btn-secondary mt-3">Generate chart</button>`)
+                                break;
+                            case "5":
+                                let radioButton5 = "";
+                                container.append(`<label class="form-label">
+                                    X label :
+                                </label>
+                                <input class="form-control mb-3" id="xlabel2" type="text" placeholder="enter x-label" aria-label="default input example">`)
+                                container.append(`<label class="form-label">
+                                    X column :
+                                </label>`)
+                                headers.forEach(header => {
+                                    var radio = `<div class="form-check">
+                                        <input class="form-check-input" type="radio" name="rg6" value="${header}">
+                                        <label class="form-check-label" for="${header}">
+                                            ${header}
+                                        </label>
+                                    </div>`;
+                                    container.append(radio);
+                                    radioButton5 += `<div class="form-check">
+                                        <input class="form-check-input" type="radio" name="rg7" value="${header}">
+                                        <label class="form-check-label" for="${header}">
+                                            ${header}
+                                        </label>
+                                    </div>`;
+                                })
+                                container.append(`<label class="form-label">
+                                    Y label :
+                                </label>
+                                <input class="form-control mb-3" id="ylabel2" type="text" placeholder="enter y-label" aria-label="default input example">`)
+                                container.append(`<label class="form-label mt-3">
+                                    Y column :
+                                </label>`)
+                                container.append(radioButton5)
+                                container.append(`<button type="button" id="scatterchrt" class="btn btn-secondary mt-3">Generate chart</button>`)
+                                break;
+                            case "6":
+                                container.append(`<label class="form-label">
+                                    Select column :
+                                </label>`)
+                                headers.forEach(header => {
+                                    var radio = `<div class="form-check">
+                                        <input class="form-check-input" type="radio" name="rg8" value="${header}">
+                                        <label class="form-check-label" for="${header}">
+                                            ${header}
+                                        </label>
+                                    </div>`;
+                                    container.append(radio);
+                                })
+                                container.append(`<button type="button" id="piechrt" class="btn btn-secondary mt-3">Generate chart</button>`)
+                                break;
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Data getching failed', status, error);
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Data fetching failed! Please try again!");
+                        toastBootstrap.show()
+                    }
+                })
+            })
+
+            $(document).on('click', '#barchrt', ()=>{
+                let title = $("#title").val();
+                let val = $("#chrt").val();
+                
+                let group_by_cols = [];
+                $('.bargroup:checked').each(function() {
+                    if($(this).val()!=""){
+                        group_by_cols.push($(this).val());
+                    }
+                });
+                let cat_col = $('input[name="rg"]:checked').val();
+                let stacked;
+                if ($('#stacked').is(':checked')) {
+                    stacked = true;
+                } else {
+                    stacked = false;
+                }
+                if(!session_id){
+                    session_id = getCookie("session_id");
+                }
+                $.ajax({
+                    url: "http://127.0.0.1:8000/plot-chart/",
+                    type: 'POST',
+                    contentType: 'application/json', 
+                    data: JSON.stringify({
+                        "session_id": session_id,
+                        "chart_type": "bar",
+                        "title":title,
+                        "group_by_columns":group_by_cols,
+                        "category_column":cat_col,
+                        "stacked":stacked,
+                        "x_column":"",
+                        "y_column":"",
+                        "x_label":"",
+                        "y_label":"",
+                    }),
+                    accepts: "application/octet-stream",
+                    xhrFields: {
+                        responseType: 'blob'
+                    },
+                    success: async (response) => {
+                        const url = await URL.createObjectURL(response);
+                        $("#chrtimg").attr("width",950)
+                        $("#chrtimg").attr("height",650)
+
+                        $('#chrtimg').attr('src', url)
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Data getching failed', status, error);
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Data fetching failed! Please try again!");
+                        toastBootstrap.show()
+                    }
+                })
+            })
+
+            $(document).on('click', '#heatmapchrt', ()=>{
+                let title = $("#title").val();
+                let val = $("#chrt").val();
+                
+                let group_by_cols = [];
+                $('.heatmapgroup:checked').each(function() {
+                    if($(this).val()!=""){
+                        group_by_cols.push($(this).val());
+                    }
+                });
+                let cat_col = $('input[name="rg2"]:checked').val();
+                if(!session_id){
+                    session_id = getCookie("session_id");
+                }
+                $.ajax({
+                    url: "http://127.0.0.1:8000/plot-chart/",
+                    type: 'POST',
+                    contentType: 'application/json', 
+                    data: JSON.stringify({
+                        "session_id": session_id,
+                        "chart_type": "heatmap",
+                        "title":title,
+                        "group_by_columns":group_by_cols,
+                        "category_column":cat_col,
+                        "stacked":false,
+                        "x_column":"",
+                        "y_column":"",
+                        "x_label":"",
+                        "y_label":"",
+                    }),
+                    accepts: "application/octet-stream",
+                    xhrFields: {
+                        responseType: 'blob'
+                    },
+                    success: async (response) => {
+                        const url = await URL.createObjectURL(response);
+                        $("#chrtimg").attr("width",950)
+                        $("#chrtimg").attr("height",650)
+                        $('#chrtimg').attr('src', url)
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Data getching failed', status, error);
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Data fetching failed! Please try again!");
+                        toastBootstrap.show()
+                    }
+                })
+            })
+
+            $(document).on('click', '#linechrt', ()=>{
+                let title = $("#title").val();
+                let val = $("#chrt").val();
+                let x_label = $("#xlabel1").val();
+                let y_label = $("#ylabel1").val();
+                let x_col = $('input[name="rg3"]:checked').val();
+                let y_col = $('input[name="rg4"]:checked').val();
+                
+                if(!session_id){
+                    session_id = getCookie("session_id");
+                }
+                $.ajax({
+                    url: "http://127.0.0.1:8000/plot-chart/",
+                    type: 'POST',
+                    contentType: 'application/json', 
+                    data: JSON.stringify({
+                        "session_id": session_id,
+                        "chart_type": "line",
+                        "title":title,
+                        "group_by_columns":[],
+                        "category_column":"",
+                        "stacked":false,
+                        "x_column":x_col,
+                        "y_column":y_col,
+                        "x_label":x_label,
+                        "y_label":y_label,
+                    }),
+                    accepts: "application/octet-stream",
+                    xhrFields: {
+                        responseType: 'blob'
+                    },
+                    success: async (response) => {
+                        const url = await URL.createObjectURL(response);
+                        $("#chrtimg").attr("width",950)
+                        $("#chrtimg").attr("height",650)
+                        $('#chrtimg').attr('src', url)
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Data getching failed', status, error);
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Data fetching failed! Please try again!");
+                        toastBootstrap.show()
+                    }
+                })
+            })
+
+            $(document).on('click', '#histchrt', ()=>{
+                let title = $("#title").val();
+                let val = $("#chrt").val();
+                let y_label = $("#collabel2").val();
+                let y_col = $('input[name="rg5"]:checked').val();
+                
+                if(!session_id){
+                    session_id = getCookie("session_id");
+                }
+                $.ajax({
+                    url: "http://127.0.0.1:8000/plot-chart/",
+                    type: 'POST',
+                    contentType: 'application/json', 
+                    data: JSON.stringify({
+                        "session_id": session_id,
+                        "chart_type": "histogram",
+                        "title":title,
+                        "group_by_columns":[],
+                        "category_column":"",
+                        "stacked":false,
+                        "x_column":"",
+                        "y_column":y_col,
+                        "x_label":"",
+                        "y_label":y_label,
+                    }),
+                    accepts: "application/octet-stream",
+                    xhrFields: {
+                        responseType: 'blob'
+                    },
+                    success: async (response) => {
+                        const url = await URL.createObjectURL(response);
+                        $("#chrtimg").attr("width",950)
+                        $("#chrtimg").attr("height",650)
+                        $('#chrtimg').attr('src', url)
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Data getching failed', status, error);
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Data fetching failed! Please try again!");
+                        toastBootstrap.show()
+                    }
+                })
+            })
+
+            $(document).on('click', '#scatterchrt', ()=>{
+                let title = $("#title").val();
+                let val = $("#chrt").val();
+                let x_label = $("#xlabel2").val();
+                let y_label = $("#ylabel2").val();
+                let x_col = $('input[name="rg6"]:checked').val();
+                let y_col = $('input[name="rg7"]:checked').val();
+
+                if(!session_id){
+                    session_id = getCookie("session_id");
+                }
+                $.ajax({
+                    url: "http://127.0.0.1:8000/plot-chart/",
+                    type: 'POST',
+                    contentType: 'application/json', 
+                    data: JSON.stringify({
+                        "session_id": session_id,
+                        "chart_type": "scatter",
+                        "title":title,
+                        "group_by_columns":[],
+                        "category_column":"",
+                        "stacked":false,
+                        "x_column":x_col,
+                        "y_column":y_col,
+                        "x_label":x_label,
+                        "y_label":y_label,
+                    }),
+                    accepts: "application/octet-stream",
+                    xhrFields: {
+                        responseType: 'blob'
+                    },
+                    success: async (response) => {
+                        const url = await URL.createObjectURL(response);
+                        $("#chrtimg").attr("width",950)
+                        $("#chrtimg").attr("height",650)
+                        $('#chrtimg').attr('src', url)
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Data getching failed', status, error);
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Data fetching failed! Please try again!");
+                        toastBootstrap.show()
+                    }
+                })
+            })
+
+            $(document).on('click', '#piechrt', ()=>{
+                let title = $("#title").val();
+                let val = $("#chrt").val();
+                let cat_col = $('input[name="rg8"]:checked').val();
+                
+                if(!session_id){
+                    session_id = getCookie("session_id");
+                }
+                $.ajax({
+                    url: "http://127.0.0.1:8000/plot-chart/",
+                    type: 'POST',
+                    contentType: 'application/json', 
+                    data: JSON.stringify({
+                        "session_id": session_id,
+                        "chart_type": "pie",
+                        "title":title,
+                        "group_by_columns":[],
+                        "category_column":cat_col,
+                        "stacked":false,
+                        "x_column":"",
+                        "y_column":"",
+                        "x_label":"",
+                        "y_label":"",
+                    }),
+                    accepts: "application/octet-stream",
+                    xhrFields: {
+                        responseType: 'blob'
+                    },
+                    success: async (response) => {
+                        const url = await URL.createObjectURL(response);
+                        $("#chrtimg").attr("width",950)
+                        $("#chrtimg").attr("height",650)
+                        $('#chrtimg').attr('src', url)
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Data getching failed', status, error);
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Data fetching failed! Please try again!");
+                        toastBootstrap.show()
+                    }
+                })
+            })
+
+            $("#deletefile").on('click',()=>{
+                session_id = getCookie("session_id");
+                $.ajax({
+                    url:`http://127.0.0.1:8000/delete-key/${session_id}`,
+                    method: "DELETE",
+                    success: function(response){
+                        console.log(response)
+                        if(response.status_code==200){
+                            deleteCookie("session_id")
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Document deleted successfully");
+                            $("#fileDelete").hide()
+                            $("#fileSelect").show()
+                            toastBootstrap.show()
+                        } else {
+                            const toastLiveExample = $('#liveToast')
+                            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                            $("#toastMsg").text("Failed to delete document! Please try again!");
+                            toastBootstrap.show()
+                        }
+                    }, 
+                    error: function(xhr, status, error) {
+                        const toastLiveExample = $('#liveToast')
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+                        $("#toastMsg").text("Failed to delete document! Please try again!");
+                        toastBootstrap.show()
+                    }
+                })
+            })
+
+        })
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+        const appendAlert = (message, type) => {
+        const wrapper = document.createElement('div')
+        wrapper.innerHTML = [
+            `<div class="alert alert-light alert-dismissible" role="alert">`,
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            '</div>'
+        ].join('')
+
+        alertPlaceholder.append(wrapper)
+        }
+
+        // const alertTrigger = document.getElementById('saveFile')
+        // if (alertTrigger) {
+        // alertTrigger.addEventListener('click', () => {
+        //     appendAlert('File uploaded successfully!', 'success')
+        // })
+        // }
+        document.addEventListener('DOMContentLoaded', function () {
+            var toggleButton = document.getElementById('toggleButton');
+            var toggleIcon = document.getElementById('toggleIcon');
+            var collapseElement = document.getElementById('collapseExample');
+
+            collapseElement.addEventListener('show.bs.collapse', function () {
+                toggleIcon.classList.remove('fa-rotate-180');
+            });
+
+            collapseElement.addEventListener('hide.bs.collapse', function () {
+                toggleIcon.classList.add('fa-rotate-180');
+            });
+            
+            var toggleButton2 = document.getElementById('toggleButton2');
+            var toggleIcon2 = document.getElementById('toggleIcon2');
+            var collapseElement2 = document.getElementById('collapseExample2');
+
+            collapseElement2.addEventListener('show.bs.collapse', function () {
+                toggleIcon2.classList.remove('fa-rotate-180');
+            });
+
+            collapseElement2.addEventListener('hide.bs.collapse', function () {
+                toggleIcon2.classList.add('fa-rotate-180');
+            });
+
+        });
+    </script>
+</html>
