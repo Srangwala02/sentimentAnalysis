@@ -1,0 +1,1015 @@
+{
+	"info": {
+		"_postman_id": "163cffb4-eb69-4c2e-aee5-417762f32ac9",
+		"name": "IntelAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25098598",
+		"_collection_link": "https://warped-firefly-983006.postman.co/workspace/Astrochat~2ddafd14-8b9e-4ec0-add3-31e64d7513c2/collection/25098598-163cffb4-eb69-4c2e-aee5-417762f32ac9?action=share&source=collection_link&creator=25098598"
+	},
+	"item": [
+		{
+			"name": "remove-duplicate-rows",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\":\"4634b8ec-9ca6-4f5a-b54a-70fa8f7e5f4b\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/remove-duplicate-rows/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"remove-duplicate-rows",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-columns",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/sentimentAnalysis/api/cleaned_file.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-columns/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-columns",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-unique-values-count",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\":\"1137e764-a20e-46f1-941f-e3347be516c1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-unique-values-count/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-unique-values-count",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-null-values-percentage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/sentimentAnalysis/api/cleaned_file.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-null-values-percentage/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-null-values-percentage",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload-csv",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/sentimentAnalysis/api/no_duplicates_file.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/upload-csv/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"upload-csv",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-column-counts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-column-counts/?session_id=009cc283-5dff-48d9-a467-c4df1f7b968b",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-column-counts",
+						""
+					],
+					"query": [
+						{
+							"key": "session_id",
+							"value": "009cc283-5dff-48d9-a467-c4df1f7b968b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-first-rows",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-first-rows/?session_id=8e858933-a857-4a48-9499-9c78b192b65b",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-first-rows",
+						""
+					],
+					"query": [
+						{
+							"key": "session_id",
+							"value": "8e858933-a857-4a48-9499-9c78b192b65b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-info",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\":\"009cc283-5dff-48d9-a467-c4df1f7b968b\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-info/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-info",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-unique-values-column",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\":\"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n    \"columns\":[\"category\",\"rating\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-unique-values-column/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-unique-values-column",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "drop-columns",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\":\"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n    \"columns\":[\"review_title\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/drop-columns/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"drop-columns",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "drop-null-value-rows",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\":\"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n    \"columns\":[\"review_text\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/drop-null-value-rows/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"drop-null-value-rows",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-null-counts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\":\"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n    \"columns\":[\"review_text\",\"rating\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-null-counts/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-null-counts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-column-stats",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\":\"009cc283-5dff-48d9-a467-c4df1f7b968b\",\r\n    \"columns\":[\"review_text\",\"rating\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-column-stats/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-column-stats",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-unique-value-counts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\":\"009cc283-5dff-48d9-a467-c4df1f7b968b\",\r\n    \"columns\":[\"category\",\"rating\",\"review_title\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-unique-value-counts/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-unique-value-counts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-specific-value-counts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"session_id\": \"009cc283-5dff-48d9-a467-c4df1f7b968b\",\r\n  \"column_value_pairs\": [\r\n    {\"column\": \"rating\", \"value\": \"1\"},\r\n    {\"column\": \"rating\", \"value\": \"2\"},\r\n    {\"column\": \"product_name\", \"value\": \"i5\"}\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-specific-value-counts/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-specific-value-counts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-specific-value-rows",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n  \"column_value_pairs\": [\r\n    {\"column\": \"rating\", \"value\": \"1\"},\r\n    {\"column\": \"rating\", \"value\": \"2\"},\r\n    {\"column\": \"category\", \"value\": \"Other\"}\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-specific-value-rows/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-specific-value-rows",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-boxplot-image",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n  \"column_name\": \"rating\",\r\n  \"title\": \"My Title\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/create-boxplot-image/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"create-boxplot-image",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove-outliers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "// do not test this api\r\n{\r\n  \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n  \"column_name\": \"product_name\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/remove-outliers/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"remove-outliers",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-lower-upper-bound",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n  \"column_name\": \"rating\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-lower-upper-bound/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-lower-upper-bound",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "perform-sentiment-analysis",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n  \"column_name\": \"review_text\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/perform-sentiment-analysis/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"perform-sentiment-analysis",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-sentiment-counts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n  \"column_name\": \"product_name\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/get-sentiment-counts/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"get-sentiment-counts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "extract-keyfeature",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/extract-keyfeature/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"extract-keyfeature",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "keyfeature-improvements",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/keyfeature-improvements/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"keyfeature-improvements",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "apply-conditions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n    \"resultant_col\": \"category\",\r\n    \"base_col\": \"product_name\",\r\n    \"conditions\": {\r\n    \"Intel i5 12th gen processor\": [[\"i5\", \"12 gen\"], [\"i5-12\"]],\r\n    \"Intel i5 13th gen processor\": [[\"i5\", \"13 gen\"], [\"i5-13\"]],\r\n    \"Intel i5 14th gen processor\": [[\"i5\", \"14 gen\"], [\"i5-14\"]],\r\n    \"Intel i7 12th gen processor\": [[\"i7\", \"12 gen\"], [\"i7\", \"12th gen\"], [\"i7-12\"]],\r\n    \"Intel i7 13th gen processor\": [[\"i7\", \"13 gen\"], [\"i7-13\"]],\r\n    \"Intel i7 14th gen processor\": [[\"i7\", \"14 gen\"], [\"i7-14\"]],\r\n    \"Intel i9 12th gen processor\": [[\"i9\", \"12 gen\"], [\"i9-12\"]],\r\n    \"Intel i9 13th gen processor\": [[\"i9\", \"13 gen\"], [\"i9-13\"]],\r\n    \"Intel i9 14th gen processor\": [[\"i9\", \"14 gen\"], [\"i9-14\"]],\r\n    \"Intel i3 12th gen processor\": [[\"i3\", \"12 gen\"], [\"i3\", \"12th gen\"], [\"i3-12\"]],\r\n    \"Intel i3 13th gen processor\": [[\"i3\", \"13 gen\"], [\"i3-13\"]],\r\n    \"Intel i3 14th gen processor\": [[\"i3\", \"14 gen\"], [\"i3-14\"]]\r\n  } \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/apply-conditions/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"apply-conditions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "drop-specific-rows",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n    \"column_value_pairs\": [\r\n        {\"column\": \"category\", \"value\": \"Other\"}\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/drop-specific-rows/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"drop-specific-rows",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "apply-regex",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n    \"extraction_patterns\": [\r\n    {\r\n        \"column_name\": \"review_date\",\r\n        \"new_column_name\": \"date\",\r\n        \"pattern\": \"on\\\\s(\\\\d+\\\\s\\\\w+\\\\s\\\\d{4})\"\r\n    },\r\n    {\r\n        \"column_name\": \"review_date\",\r\n        \"new_column_name\": \"country\",\r\n        \"pattern\": \"in\\\\s(.*?)\\\\son\"\r\n    } \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/apply-regex/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"apply-regex",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "plot-chart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "// session_id: str\r\n//     chart_type: str\r\n//     x_column: str = None\r\n//     y_column: str = None\r\n//     category_column: str = None\r\n{\r\n    // \"session_id\": \"009cc283-5dff-48d9-a467-c4df1f7b968b\",\r\n    // \"chart_type\": \"bar\",\r\n    // \"x_column\": \"category\",\r\n    // \"y_column\": \"sentiment\",\r\n    // \"category_column\": \"sentiment\",\r\n    // \"group_by_columns\": [\"product_name\", \"sentiment\"],\r\n    // \"stacked\": true,\r\n    // \"x_label\": \"\",\r\n    // \"y_label\": \"\",\r\n    // \"title\": \"Sentiment Distribution\"\r\n    \"session_id\": \"009cc283-5dff-48d9-a467-c4df1f7b968b\",\r\n                        \"chart_type\": \"heatmap\",\r\n                        \"title\":\"title\",\r\n                        \"group_by_columns\":[\"product_name\",\"rating\",\"sentiment\"],\r\n                        \"category_column\":\"sentiment\",\r\n                        \"stacked\":false,\r\n                        \"x_column\":\"\",\r\n                        \"y_column\":\"\",\r\n                        \"x_label\":\"\",\r\n                        \"y_label\":\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/plot-chart/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"plot-chart",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "extract-year",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n    \"column_name\": \"date\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/extract-year/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"extract-year",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "plot-multi-chart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\": \"8e858933-a857-4a48-9499-9c78b192b65b\",\r\n    \"chart_type\": \"pie\",\r\n    \"x_column\": \"category\",\r\n    \"y_column\": \"sentiment\",\r\n    \"category_column\": \"sentiment\",\r\n    \"group_by_columns\": [\"category\", \"sentiment\"],\r\n    \"stacked\": false,\r\n    \"multi_column\": \"category\",\r\n    \"x_label\": \"\",\r\n    \"y_label\": \"\",\r\n    \"title\": \"Sentiment Distribution\"\r\n    // \"chart_type\": \"line\",\r\n    // \"x_column\": \"category\",\r\n    // \"y_column\": \"sentiment\",\r\n    // \"category_column\": \"category\",\r\n    // \"group_by_columns\": [\"category\", \"sentiment\"],\r\n    // \"stacked\": false,\r\n    // \"multi_column\": \"year\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/plot-multi-chart/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"plot-multi-chart",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-key",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/delete-key/8e858933-a857-4a48-9499-9c78b192b65b",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"delete-key",
+						"8e858933-a857-4a48-9499-9c78b192b65b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "clear-redis",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/clear-redis/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"clear-redis",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
