@@ -69,7 +69,7 @@ Open the 'dataScrapping.ipynb' notebook from the Jupyter interface to view and e
 - Open Postman.
 - Click on the Import button in the top left corner.
 - Select the File tab.
-- Click on Choose Files and select the exported Postman collection file (IntelAPI.json).
+- Click on Choose Files and select the exported Postman collection file (IntelAPI.postman_collection.json).
 
 ### Using the APIs
 - Ensure your FastAPI server is running (see the "Running the Application Locally for Development" section).
