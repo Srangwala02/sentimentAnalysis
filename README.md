@@ -79,7 +79,7 @@ Open the 'dataScrapping.ipynb' notebook from the Jupyter interface to view and e
 
 ## Usage
 
-### API Endpoints
+### API Endpoints Example
 
 - **Upload File:** `/upload-file/`
     - Method: POST
