@@ -66,24 +66,18 @@ Open the 'dataScrapping.ipynb' notebook from the Jupyter interface to view and e
 ## Using Postman to Access the APIs
 
 ### Importing the Postman Collection
-    - Open Postman.
-    - Click on the Import button in the top left corner.
-    - Select the File tab.
-    - Click on Choose Files and select the exported Postman collection file (IntelAPI.json).
+- Open Postman.
+- Click on the Import button in the top left corner.
+- Select the File tab.
+- Click on Choose Files and select the exported Postman collection file (IntelAPI.json).
 
 ### Using the APIs
-    - Ensure your FastAPI server is running (see the "Running the Application Locally for Development" section).
-    - Open the imported collection in Postman.
-    - You will see the various endpoints available in the collection.
-    - Select an endpoint and click Send to make a request.
+- Ensure your FastAPI server is running (see the "Running the Application Locally for Development" section).
+- Open the imported collection in Postman.
+- You will see the various endpoints available in the collection.
+- Select an endpoint and click Send to make a request.
 
 ## Usage
-
-### 1. Upload File
-Upload a file containing text data to the server via the `/upload-file` endpoint.
-
-### 2. Perform Sentiment Analysis
-Perform sentiment analysis on a specified column of the uploaded file using the `/perform-sentiment-analysis/` endpoint.
 
 ### API Endpoints
 
