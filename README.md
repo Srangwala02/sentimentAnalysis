@@ -63,4 +63,48 @@ Open the 'dataScrapping.ipynb' notebook from the Jupyter interface to view and e
     ```sh
     uvicorn redisapp:app --reload
     ```
+## Using Postman to Access the APIs
 
+### Importing the Postman Collection
+    - Open Postman.
+    - Click on the Import button in the top left corner.
+    - Select the File tab.
+    - Click on Choose Files and select the exported Postman collection file (IntelAPI.json).
+
+### Using the APIs
+    - Ensure your FastAPI server is running (see the "Running the Application Locally for Development" section).
+    - Open the imported collection in Postman.
+    - You will see the various endpoints available in the collection.
+    - Select an endpoint and click Send to make a request.
+
+## Usage
+
+### 1. Upload File
+Upload a file containing text data to the server via the `/upload-file` endpoint.
+
+### 2. Perform Sentiment Analysis
+Perform sentiment analysis on a specified column of the uploaded file using the `/perform-sentiment-analysis/` endpoint.
+
+### API Endpoints
+
+- **Upload File:** `/upload-file/`
+    - Method: POST
+    - Description: Uploads a file to the server.
+    - Request Body: Multipart/form-data
+    - Response: JSON with status and message.
+
+- **Remove Duplicate Rows:** `/remove-duplicate-rows/`
+    - Method: POST
+    - Description: Remove duplicate rows from the uploaded file.
+    - Request Body: JSON with `session_id`.
+    - Response: JSON with status and message.
+
+### Example Request
+
+**Perform Sentiment Analysis**
+
+```sh
+curl -X POST "http://127.0.0.1:8000/remove-duplicate-rows/" -H "accept: application/json" -H "Content-Type: application/json" -d '{"session_id": "your_session_id"}'
+```
+
+You can use other api endpoints in this way.
